@@ -8,6 +8,9 @@ package object grammars {
 
   object EmptyAction extends Action(() => Seq(Terminal("")))
 
+  def TerminalAction(value: String): Action =
+    Action(() => Seq(Terminal(value)))
+
   type LeftSide = Nonterminal
   type RightSide = Set[Production]
 
@@ -15,7 +18,8 @@ package object grammars {
 
   def takeRandom[T](xs: Traversable[T]): Option[T] =
     /** toVector is necessary here in case a Set gets passed in. For some
-      * reason shuffle is defined on Traversable instead of Iterable */
+      * reason shuffle is defined on Traversable (as opposed to Iterable)?
+      * I'm not sure that makes any sense. *shrug* */
     util.Random.shuffle(xs.toVector).headOption
 
   def produceRandom(grammar: Grammar, left: LeftSide): Option[Production] =

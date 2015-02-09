@@ -1,7 +1,7 @@
 package grammars
 
 
-case class Asshole(topic: Action, advice: Action, criticism: Action) {
+case class Asshole(topic: Action, advice: Action) {
 
   // typing conveniences
   def nt(name: String) = Nonterminal(name)

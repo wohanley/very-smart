@@ -3,6 +3,14 @@ package grammars
 
 object Main {
   def main(args: Array[String]) = {
-    println(Asshole(Action(() => Seq(Terminal("ham sandwich"))), EmptyAction, EmptyAction).randomText())
+    println(unsolicitedAdvice.randomText)
+  }
+
+  def unsolicitedAdvice: Asshole = {
+    val article = wikihow.randomArticle
+    Asshole(
+      TerminalAction(wikihow.topic(article)),
+      TerminalAction(wikihow.advice(article))
+    )
   }
 }
