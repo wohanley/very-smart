@@ -1,7 +1,7 @@
 package grammars
 
 
-object Asshole {
+case class Asshole(topic: Action, advice: Action, criticism: Action) {
 
   // typing conveniences
   def nt(name: String) = Nonterminal(name)
@@ -33,11 +33,9 @@ object Asshole {
         nt("advice")
       )),
     nt("investigation") -> Set(
-      Seq(tm("looks like a "), Action(getSubject))
+      Seq(tm("looks like "), topic)
     )
   )
-
-  def getSubject(): Production = oneTm("ham sandwich")
 
   def randomText(): Option[String] = grammars.randomText(grammar)
 }

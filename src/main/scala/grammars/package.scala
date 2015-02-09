@@ -6,13 +6,17 @@ package object grammars {
   case class Terminal(value: String) extends Symbol
   case class Action(f: () => Production) extends Symbol
 
+  object EmptyAction extends Action(() => Seq(Terminal("")))
+
   type LeftSide = Nonterminal
   type RightSide = Set[Production]
 
   type Grammar = Map[LeftSide, RightSide]
 
   def takeRandom[T](xs: Traversable[T]): Option[T] =
-    util.Random.shuffle(xs).headOption
+    /** toVector is necessary here in case a Set gets passed in. For some
+      * reason shuffle is defined on Traversable instead of Iterable */
+    util.Random.shuffle(xs.toVector).headOption
 
   def produceRandom(grammar: Grammar, left: LeftSide): Option[Production] =
     grammar.get(left).flatMap(productions => takeRandom(productions))
