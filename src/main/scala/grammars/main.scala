@@ -9,8 +9,8 @@ object Main {
   def unsolicitedAdvice: Asshole = {
     val article = wikihow.randomArticle
     Asshole(
-      TerminalAction(wikihow.topic(article)),
-      TerminalAction(wikihow.advice(article))
+      TerminalAction(wikihow.topic(article).getOrElse("")),
+      TerminalAction(wikihow.advice(article).getOrElse(""))
     )
   }
 }
