@@ -19,21 +19,48 @@ case class Asshole(topic: Action, advice: Action) {
     nt("title") -> tms("bro", "dude", "man", "girl", "my man", "little lady"),
     nt("body") -> Set(
       Seq(
-        nt("investigation"), tm(" "),
+        nt("investigation"), tm(". "),
         nt("criticism"), tm(" "),
-        nt("advice")
+        nt("adviceWrapper")
       ),
-      oneNt("investigation"),
-        Seq(
-          nt("investigation"), tm(" "),
-          nt("criticism")
-        ),
       Seq(
         nt("investigation"), tm(" "),
-        nt("advice")
+        nt("backhand")
+      ),
+      Seq(
+        nt("investigation"), tm(" "),
+        nt("adviceWrapper")
       )),
     nt("investigation") -> Set(
-      Seq(tm("looks like "), topic)
+      Seq(tm("looks like "), topic, tm(".")),
+      Seq(tm("is that "), topic, tm("?")),
+      Seq(tm("what you got there, "), topic, tm("?"))
+    ),
+    nt("criticism") -> Set(
+      Seq(nt("backhand"), tm(", but")),
+      Seq(nt("straightCrit"))
+    ),
+    nt("backhand") -> Set(
+      oneTm("that's alright"),
+      oneTm("fuckin sweet. love it."),
+      oneTm("your doin alright"),
+      oneTm("dope"),
+      oneTm("that's cool")
+    ),
+    nt("straightCrit") -> Set(
+      oneTm("actually, "),
+      oneTm("not quite! "),
+      oneTm("good try, but "),
+      oneTm("ah, see, "),
+      oneTm("I did this for years. ")
+    ),
+    nt("adviceWrapper") -> Set(
+      Seq(advice),
+      Seq(tm("don't forget to "), advice),
+      Seq(tm("make sure you "), advice),
+      Seq(tm("gotta "), advice),
+      Seq(tm("did you "), advice, tm("?")),
+      Seq(tm("yeah, I always "), advice)
     )
   )
 
