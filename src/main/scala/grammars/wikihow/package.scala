@@ -4,7 +4,8 @@ package object wikihow {
   import org.jsoup.nodes.Document
 
 
-  def randomArticle: Document = Jsoup.connect("").get()
+  def randomArticle: Document =
+    Jsoup.connect("http://www.wikihow.com/Special:Randomizer").get()
 
   def topic(article: Document): String = "your butt"
 
