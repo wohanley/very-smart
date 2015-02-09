@@ -40,7 +40,7 @@ package object grammars {
 
   def randomText(grammar: Grammar): Option[String] = {
     produceRandom(grammar, Nonterminal("start")).map(production =>
-      reduceProduction(grammar, production).mkString(" ")
+      reduceProduction(grammar, production).mkString
     )
   }
 }
