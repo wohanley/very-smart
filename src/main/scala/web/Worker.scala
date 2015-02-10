@@ -15,7 +15,7 @@ object Worker {
   private def tweetRegularly() = {
     while (true) {
       web.tweet(unsolicitedAdvice.getOrElse("*continuous farting noises*"))
-      Thread.sleep(60 * 1000)
+      Thread.sleep(90 * 60 * 1000)
     }
   }
 
