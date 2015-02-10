@@ -1,1 +1,1 @@
-worker: target/universal/stage/bin/ass-bot
+worker: target/universal/stage/bin/advicebot

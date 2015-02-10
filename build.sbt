@@ -2,7 +2,7 @@ import NativePackagerKeys._
 
 packageArchetype.java_application
 
-name := """ass-bot"""
+name := """advicebot"""
 version := "1.0"
 
 scalaVersion := "2.11.5"
