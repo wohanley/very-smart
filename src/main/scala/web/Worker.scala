@@ -9,7 +9,7 @@ import scala.util.Failure
 object Worker {
 
   def main(args: Array[String]) {
-    tweetRegularly()
+//    tweetRegularly()
   }
 
   private def tweetRegularly() = {
